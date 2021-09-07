@@ -90,7 +90,7 @@ router.get("/", async (req,res)=>{
     res.status(200).json(posts);
 
   }catch (err) {
-    res.status(500).json(error);
+    res.status(500).json(err);
   }
 })
 

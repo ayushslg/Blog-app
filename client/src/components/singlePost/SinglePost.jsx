@@ -1,30 +1,105 @@
+import { PostAdd } from "@material-ui/icons";
+import axios from "axios";
+import { useContext, useState } from "react";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Context } from "../../context/Context";
 import "./singlePost.css";
 
 export default function SinglePost() {
+    const location = useLocation()
+    const path = location.pathname.split("/")[2];
+    const [post,setPost] = useState({})
+    const PF = "http://localhost:5000/images/"
+    const { user } = useContext(Context);
+    const [title,setTitle] = useState("");
+    const [desc,setDesc] = useState("");
+    const [updateMode,setUpdateMode] = useState(false);
+
+    useEffect(()=>{
+        const getPost = async ()=>{
+            const res= await axios.get("/posts/"+path);
+            setPost(res.data);
+            setTitle(res.data.title);
+            setDesc(res.data.desc);
+        }; 
+        getPost()
+    }, [path]);
+
+    const handleDelete = async()=>{
+        try{
+        await axios.delete(`/posts/${post._id}`, {
+            data: {username:user.username}});
+        window.location.replace("/");
+        }catch(err){
+
+        }
+    };
+    const handleUpdate = async()=>{
+        try{
+            await axios.put(`/posts/${post._id}`, {
+              username:user.username,title,desc});
+            //window.location.reload();
+            setUpdateMode(false);
+            }catch(err){
+    
+            }
+    };
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">
-                <img
-                    src="https://scontent-bom1-1.xx.fbcdn.net/v/t31.18172-8/23632093_937546619726027_5397948785834078276_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=19026a&_nc_ohc=oLpPz6mgTMoAX-m76Fy&_nc_ht=scontent-bom1-1.xx&oh=88a25f0644a5b4b4d3c3adec19806e6f&oe=60F47AB4" 
+                {post.photo && 
+                (<img
+                    src={PF + post.photo} 
                     alt="" 
                     className="singlePostImg"
-                />
-                <h1 className="singlePostTitle">
-                    Lorem ipsum dolor, sit amet
-                    <div className="singlePostEdit">
-                        <i className="singlePostIcon far fa-edit"></i>
-                        <i className="singlePostIcon far fa-trash-alt"></i>
-                    </div>
+                />)
+                }{
+                    updateMode ? <input type="text" value={title}
+                     className="singlePostTitleInput"
+                         autoFocus
+                         onChange = {(e)=>setTitle(e.target.value)}
+                     /> : (
+                        <h1 className="singlePostTitle">
+                        {title}
+                        {post.username === user?.username &&
+                            (<div className="singlePostEdit">
+                            <i className="singlePostIcon far fa-edit" 
+                             onClick ={()=>setUpdateMode(true)}
+                            ></i>
+                            <i className="singlePostIcon far fa-trash-alt"
+                            onClick={handleDelete}></i>
+                    </div>)
+                    }
+                    
                 </h1>
+                    )
+                }
+
+                
+                
                 <div className="singlePostInfo">
-                    <span className="singlePostAuthor">Author: <b>Ayush</b></span>
-                    <span className="singlePostDate"> 1 hour ago </span>
+                    <span className="singlePostAuthor">Author:
+                        <Link to ={`/?user=${post.username}`} className="link">
+                            <b>{post.username}</b>
+                        </Link>
+                    </span>
+                    <span className="singlePostDate"> {new Date(post.createdAt).toDateString()} </span>
                 </div>
-                <p className="singlePostDesc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione quia nisi totam possimus nesciunt earum officiis atque quaerat itaque quisquam nam maiores eaque, cupiditate ea asperiores vero eum quae? Voluptatibus.
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, perferendis. Similique soluta nostrum explicabo animi deleniti dicta odio debitis dolore doloremque ducimus, ipsam accusamus aperiam at nemo magnam ab impedit?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero deserunt aspernatur ullam optio ipsa harum saepe consequatur natus corrupti eaque quisquam quod nam non at animi sed, necessitatibus earum nesciunt.
-                </p>
+                {updateMode ? <textarea className="singlePostDescInput"
+                    value={desc}
+                    autoFocus
+                    onChange = {(e)=>setDesc(e.target.value)}
+                /> : (
+                    <p className="singlePostDesc">
+                    {desc} 
+                    </p>
+                )}
+                {updateMode && (
+                    <button className="singlePostButton" onClick={handleUpdate}>Update</button>
+                )}
+                
+                
             </div>
         </div>
     )
