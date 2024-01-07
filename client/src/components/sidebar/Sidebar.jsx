@@ -19,7 +19,9 @@ export default function Sidebar() {
             <div className="sidebarItem">
                 <span className="sidebarTitle">ABOUT ME</span>
                 <img src="https://userpic.codeforces.org/1371261/title/7f980a4161fd5043.jpg" alt=""/>
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam cum soluta ea est excepturi doloremque earum. Odit quis soluta molestias eos quod nobis, voluptatem minus molestiae iste eius exercitationem tenetur.</p>
+                <p> I'm a dedicated full-stack developer, currently crafting software solutions at Microsoft. With a strong penchant for sitcoms and an insatiable appetite for good reads, I find solace in the world of TV series and books when I'm not coding. <br>
+                </br><br></br>I've delved deep into competitive coding, earning my stripes by qualifying for three ICPC regionals along the way. My academic journey led me through the corridors of NIT Durgapur, where I honed my skills and passion for technology. <br>
+                </br><br></br>When it comes to personality, I pride myself on being a fun-loving individual and quite possibly the most humorous person you'll ever have the pleasure of meeting!</p>
             </div>
             <div className="sidebarItem">
                 <span className="sidebarTitle">CATEGORIES</span>
