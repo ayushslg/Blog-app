@@ -14,10 +14,18 @@ export default function TopBar() {
     return (
         <div className="top">
             <div className="topLeft">
-            <i className="topIcon fab fa-facebook-square"></i>
-            <i className="topIcon fab fa-twitter-square"></i>
-            <i className="topIcon fab fa-pinterest"></i>
-            <i className="topIcon fab fa-instagram-square"></i>
+            <a href="https://www.facebook.com/chris323dude1/" target="_blank" rel="noopener noreferrer">
+                <i className="topIcon fab fa-facebook-square"></i>
+            </a>
+            <a href="https://www.twitter.com/yourtwitterprofile" target="_blank" rel="noopener noreferrer">
+                <i className="topIcon fab fa-twitter-square"></i>
+            </a>
+            <a href="https://github.com/ayushslg" target="_blank" rel="noopener noreferrer">
+                <i className="topIcon fab fa-github-square"></i>
+            </a>
+            <a href="https://www.instagram.com/chris323dude/" target="_blank" rel="noopener noreferrer">
+                <i className="topIcon fab fa-instagram-square"></i>
+            </a>
             </div>
             <div className="topCenter">
                 <ul className="topList">

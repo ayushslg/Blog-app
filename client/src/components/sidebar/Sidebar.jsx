@@ -36,10 +36,18 @@ export default function Sidebar() {
             <div className="sidebarItem">
                 <span className="sidebarTitle">FOLLOW US</span>
                 <div className="sidebarSocial">
-                    <i className="sidebarIcon fab fa-facebook-square"></i>
-                    <i className="sidebarIcon fab fa-twitter-square"></i>
-                    <i className="sidebarIcon fab fa-pinterest"></i>
-                    <i className="sidebarIcon fab fa-instagram-square"></i>
+                    <a href="https://www.facebook.com/chris323dude1/" target="_blank" rel="noopener noreferrer">
+                        <i className="sidebarIcon fab fa-facebook-square"></i>
+                    </a>
+                    <a href="https://www.twitter.com/yourtwitterprofile" target="_blank" rel="noopener noreferrer">
+                        <i className="sidebarIcon fab fa-twitter-square"></i>
+                    </a>
+                    <a href="https://github.com/ayushslg" target="_blank" rel="noopener noreferrer">
+                        <i className="sidebarIcon fab fa-github-square"></i>
+                    </a>
+                    <a href="https://www.instagram.com/chris323dude/" target="_blank" rel="noopener noreferrer">
+                        <i className="sidebarIcon fab fa-instagram-square"></i>
+                    </a>
                 </div>
             </div>
         </div>
