@@ -1,1 +1,1 @@
-Test Blog App
+Blog App
