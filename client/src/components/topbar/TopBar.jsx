@@ -41,7 +41,7 @@ export default function TopBar() {
                         <Link to ="/settings">
                             <img
                             className="topImg"
-                            src={PF + user.profilePic} alt="" />
+                            src={PF+user.profilePic} alt="" />
                         </Link>
                         
                     ) : (

@@ -4,11 +4,11 @@ export default function Header() {
     return (
         <div className="header">
             <div className="headerTitles">
-                <span className="headerTitleSm">React & Node</span>
+                <span className="headerTitleSm">Blogs</span>
    
                 <span className="headerTitleLg">Pandemic Pages</span>
             </div>
-            <img className="headerImg" src="https://drive.google.com/uc?export=view&id=1iK6LjtH_ul33h7kriSyYsZWNF7uyhTHp" alt="see if"/>
+            <img className="headerImg" src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="see if"/>
         </div>
     )
 }
