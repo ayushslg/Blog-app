@@ -3,10 +3,8 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const { RouterRounded } = require("@material-ui/icons");
 
-
-
-
 //REGISTER
+
 router.post("/register", async (req,res)=>{
     try{
 

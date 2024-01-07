@@ -8,15 +8,18 @@ import { Context } from "../../context/Context";
 export default function Write() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+    const [categories, setCategories] = useState([]);
     const [file, setFile] = useState(null);
     const { user } = useContext(Context);
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        console.log('Category state:', categories);
         const newPost = {
             username:user.username,
-            title,
-            desc,
+            title:title,
+            desc:desc,
+            categories:categories,
         };
         if(file){
             const data = new FormData();
@@ -37,6 +40,11 @@ export default function Write() {
 
         }
     }
+    const handleCategoryChange = (e) => {
+        const categoriesArray = e.target.value.split(',');
+        console.log('Categories Array:', categoriesArray);
+        setCategories(categoriesArray);
+    };
     return (
         <div className="write">
             {file &&
@@ -60,6 +68,14 @@ export default function Write() {
                         className="writeInput writeText"
                         onChange={e=>setDesc(e.target.value)}
                     ></textarea>
+                </div>
+                <div className="writeFormGroup">
+                <input
+                    type="text"
+                    placeholder="Categories (comma-separated)"
+                    className="writeInput writeCategoryInput"
+                    onChange={handleCategoryChange}
+                />
                 </div>
                 <button className="writeSubmit" type="submit">Publish</button>
             </form>
