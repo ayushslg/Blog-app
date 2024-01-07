@@ -17,12 +17,14 @@ export default function Settings() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
+
     const updatedUser = {
       userId: user._id,
       username,
       email,
       password,
     };
+
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;

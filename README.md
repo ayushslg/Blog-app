@@ -5,10 +5,11 @@ It has features such as reigster/login, Post an entry, Edit your post, Delete yo
 Steps to start the project:
 1. Clone
 2. cd api
-3. Run "npm run dev" in the api directory
-4. Wait for "Connected to MongoDB" message
-5. Go to the client directory cd ../api
-6. Run "npm start"
+3. Run "npm install" to install all dependencies 
+4. Run "npm run dev" in the api directory
+5. Wait for "Connected to MongoDB" message
+6. Go to the client directory cd ../api
+7. Run "npm install", "npm start"
 
 (Make sure to include your own .env file)
 
